@@ -140,14 +140,16 @@ class CardAPI(Resource):
         deck.time_created = datetime.now()
         cards_json = request.get_json()
         if cards_json:
-            deck.score = 0
+            score = 0
             for card_json in cards_json:
                 card =  deck.cards.filter(Card.c_id == card_json["c_id"]).first()
                 card.front = card_json["front"]
                 card.back = card_json["back"]
                 card.score = card_json["score"]
-                deck.score += card_json["score"]
-                db.session.commit()
+                score += card_json["score"]
+            score = score / len(card_json)
+            deck.score = score
+            db.session.commit()
         else:
             return "No cards to update", 201
 
