@@ -15,10 +15,18 @@ from flask_login import current_user
 from flask_bcrypt import Bcrypt
 from flask_security import auth_required, login_required, roles_accepted, roles_required, auth_token_required
 
+from application import tasks
+
 user_post_args = reqparse.RequestParser()
 user_post_args.add_argument('username')
 user_post_args.add_argument('email')
 user_post_args.add_argument('password')
+
+@app.route("/hello/<my_name>", methods=["GET", "POST"])
+def hello(my_name):
+    job = tasks.say_hello.delay(my_name)
+    result = job.wait()
+    return result, 200
 
 
 class UserAPI(Resource):

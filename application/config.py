@@ -21,3 +21,5 @@ class LocalDevelopmentConfig(Config):
     SECURITY_SEND_REGISTER_EMAIL = False
     SECURITY_UNAUTHORIZED_VIEW = None
     WTF_CSRF_ENABLED = False
+    CELERY_BROKER_URL = "redis://localhost:6379/1"
+    CELERY_RESULT_BACKEND = "redis://localhost:6379/2"

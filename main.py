@@ -4,6 +4,7 @@ from flask_restful import Resource, Api
 from application import config
 from application.config import LocalDevelopmentConfig
 from application.database import db
+from application import workers
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_security import Security, SQLAlchemySessionUserDatastore, SQLAlchemyUserDatastore
 from application.models import User, Role
@@ -13,6 +14,7 @@ from flask_cors import CORS
 
 app = None
 api = None
+celery = None
 
 def create_app():
 	app = Flask(__name__)
@@ -31,9 +33,19 @@ def create_app():
 	api = Api(app)
 	CORS(app)
 	app.app_context().push()
-	return app, api
+	# Create celery
+	celery = workers.celery
+	# Update with configuration
+	celery.conf.update(
+		broker_url = app.config["CELERY_BROKER_URL"],
+		result_backend = app.config["CELERY_RESULT_BACKEND"]
+		)
+	celery.Task = workers.ContextTask
+	app.app_context().push()
 
-app,api = create_app()
+	return app, api, celery
+
+app,api,celery = create_app()
 
 from application.api import *
 api.add_resource(UserAPI, "/api/user")
