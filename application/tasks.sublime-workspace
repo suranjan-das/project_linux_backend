@@ -1,0 +1,826 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cele",
+				"celery"
+			],
+			[
+				"ce",
+				"celery"
+			],
+			[
+				"deck_i",
+				"deck_info"
+			],
+			[
+				"dec",
+				"deck_info"
+			],
+			[
+				"D",
+				"Deck"
+			],
+			[
+				"cards",
+				"card_json"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"deck",
+				"deck_id"
+			],
+			[
+				"new",
+				"new_card"
+			],
+			[
+				"cu",
+				"current_user"
+			],
+			[
+				"publi",
+				"public_id"
+			],
+			[
+				"pu",
+				"public_id"
+			],
+			[
+				"ac",
+				"active"
+			],
+			[
+				"lo",
+				"login"
+			],
+			[
+				"Re",
+				"Request"
+			],
+			[
+				"Req",
+				"Require"
+			],
+			[
+				"user",
+				"user_id"
+			],
+			[
+				"C",
+				"CORS"
+			],
+			[
+				"a",
+				"auth_required"
+			],
+			[
+				"flask",
+				"flask_login"
+			],
+			[
+				"p",
+				"password"
+			],
+			[
+				"m",
+				"my_username"
+			],
+			[
+				"cust",
+				"customer_id"
+			],
+			[
+				"custo",
+				"customer_id"
+			],
+			[
+				"cus",
+				"customer_id"
+			],
+			[
+				"c",
+				"customer_id"
+			],
+			[
+				"pr",
+				"price"
+			],
+			[
+				"da",
+				"dailyInterest"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"add",
+				"add_argument"
+			],
+			[
+				"R",
+				"RequestParser"
+			],
+			[
+				"co",
+				"confirm_password"
+			],
+			[
+				"req",
+				"requests"
+			],
+			[
+				"conf",
+				"confirm_password"
+			],
+			[
+				"si",
+				"signup_password"
+			],
+			[
+				"cre",
+				"craeteAlert"
+			],
+			[
+				"ele",
+				"elem3"
+			],
+			[
+				"dat",
+				"datetime"
+			],
+			[
+				"te",
+				"text-align\tproperty"
+			],
+			[
+				"el",
+				"elem1"
+			],
+			[
+				"card",
+				"card-front"
+			],
+			[
+				"po",
+				"POST"
+			],
+			[
+				"e",
+				"event"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"padd",
+				"padding-left\tproperty"
+			],
+			[
+				"pa",
+				"padding-top\tproperty"
+			],
+			[
+				"al",
+				"align-self\tproperty"
+			],
+			[
+				"h",
+				"h2\tTag"
+			],
+			[
+				"Di",
+				"DIV\tTag"
+			],
+			[
+				"onc",
+				"onclick\tAttr"
+			],
+			[
+				"do",
+				"doTransform"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"ra",
+				"random_card"
+			],
+			[
+				"de",
+				"deck_id"
+			],
+			[
+				"login",
+				"login_required"
+			],
+			[
+				"log",
+				"login_required"
+			],
+			[
+				"Use",
+				"UserMixin"
+			],
+			[
+				"me",
+				"methods"
+			],
+			[
+				"d",
+				"deck_id"
+			],
+			[
+				"use",
+				"user_id"
+			],
+			[
+				"method",
+				"methods"
+			],
+			[
+				"res",
+				"Resource"
+			],
+			[
+				"us",
+				"user_id"
+			],
+			[
+				"ec",
+				"ecourses"
+			],
+			[
+				"db",
+				"dbConnect"
+			],
+			[
+				"conn",
+				"connection"
+			],
+			[
+				"try",
+				"try\tTry/Except/Finally"
+			],
+			[
+				"query",
+				"query_string"
+			],
+			[
+				"dbc",
+				"dbClose"
+			],
+			[
+				"ps",
+				"psycopg2"
+			],
+			[
+				"__",
+				"__tablename__"
+			],
+			[
+				"N",
+				"NotFoundError"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"con",
+				"confirm_password"
+			],
+			[
+				"sig",
+				"signup-pswd"
+			],
+			[
+				"ma",
+				"match_date"
+			],
+			[
+				"exe",
+				"execQuery"
+			],
+			[
+				"close",
+				"closeDb"
+			],
+			[
+				"enr",
+				"enrollment"
+			],
+			[
+				"cour",
+				"course_id"
+			],
+			[
+				"course",
+				"course_id"
+			],
+			[
+				"course_",
+				"course_description"
+			],
+			[
+				"s",
+				"student_id"
+			],
+			[
+				"student",
+				"student_id"
+			],
+			[
+				"se",
+				"session"
+			],
+			[
+				"fisr",
+				"first_name"
+			],
+			[
+				"erro",
+				"error_message"
+			],
+			[
+				"er",
+				"error_message"
+			],
+			[
+				"St",
+				"StudentValidationError"
+			],
+			[
+				"stu",
+				"student_parser"
+			],
+			[
+				"first",
+				"first_name"
+			],
+			[
+				"sta",
+				"status_code"
+			],
+			[
+				"stud",
+				"student_fields"
+			],
+			[
+				"flas",
+				"flask_restful"
+			],
+			[
+				"selec",
+				"selectAll"
+			],
+			[
+				"tr",
+				"try\tTry/Except/Finally"
+			],
+			[
+				"met",
+				"meta\tTag"
+			],
+			[
+				"firs",
+				"first_name"
+			],
+			[
+				"upd",
+				"updated_courses"
+			],
+			[
+				"F",
+				"False"
+			],
+			[
+				"eco",
+				"ecourse_id"
+			],
+			[
+				"E",
+				"Enrollments"
+			],
+			[
+				"fi",
+				"first_name"
+			],
+			[
+				"roll",
+				"roll_number"
+			],
+			[
+				"le",
+				"letter-spacing\tproperty"
+			],
+			[
+				"l",
+				"li\tTag"
+			],
+			[
+				"ti",
+				"title\tTag"
+			],
+			[
+				"id",
+				"id_value"
+			],
+			[
+				"max",
+				"max_mark"
+			],
+			[
+				"id_",
+				"id_value"
+			],
+			[
+				"for",
+				"form"
+			],
+			[
+				"studen",
+				"student_id"
+			],
+			[
+				"fo",
+				"form"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"student_",
+				"student_data"
+			],
+			[
+				"pro",
+				"project_html"
+			],
+			[
+				"avg",
+				"avg_economy"
+			],
+			[
+				"in",
+				"innings"
+			],
+			[
+				"runs",
+				"runs_off_bat"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"exit",
+				"Selection: Expand to Indentation"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"for",
+				"VUEFormatter"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"javas",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"set syntav ja",
+				"Set Syntax: Java"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"set syn py",
+				"Set Syntax: Python"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/linux_backend/application/workers.py",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/linux_backend/application/api.py",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/linux_backend/local_run.sh",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/linux_backend/application/models.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy_api_server/requirements.txt",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/db_directory/dummy.sqlite3",
+		"/C/Users/srnja/Downloads/login-register-master/login-register-master/login_register_modal.html",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/test_run.sh",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/test.sh",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/mad",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/local_run.sh",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/local_setup.sh",
+		"/?wsl.localhost/Ubuntu-20.04/home/sdas/mad/api_server/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/local_setup.sh",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/api.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/requirements.txt",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/application/config.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/api.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/application/api.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/config.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/models.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/application/models.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/__init__.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/application/database.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/database.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/requirements.txt",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/application/controllers.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10a-flask-api-token-based-security/code/application/controllers.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/week 8/10c-vue-app-api-app-separation/backend-code/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/dummy api server/requirement.txt",
+		"/C/Users/srnja/Desktop/folders/experiments/vue/authentication_course-course_START/authentication_course-course_START/src/components/EventCard.vue",
+		"/C/Users/srnja/Desktop/folders/experiments/js/ga2.js",
+		"/C/Users/srnja/Desktop/fjs.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/app.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week3/app.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/controllers.py",
+		"/C/Users/srnja/Desktop/folders/experiments/java/demo1.java",
+		"/C/Users/srnja/course-JS-and-the-DOM/app.js",
+		"/C/Users/srnja/course-JS-and-the-DOM/index.html",
+		"/C/Users/srnja/Desktop/folders/experiments/js/first.js",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/home.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/models.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/login.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/signup.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/validation.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/static/custom.js",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/card.html",
+		"/C/Users/srnja/Desktop/project app dev.docx",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/AddCard.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/UpdateDeck.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/static/card.css",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/models.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/logout.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/views.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/api.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/templates/review.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/AddDeck.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week6/app.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/card1.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/showcard.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/static/signin.css",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/academics.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/contact.css",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 html/academics.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/home1.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/dashboard.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/templates/login1.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 html/index.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/login_example/login_example/login_example.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/app.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/__init__.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/templates/dashboard.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/templates/addcard.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/I'm_awesome/flashkard/templates/index.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/templates/AddStudent.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/app.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/templates/home.html",
+		"/C/Users/srnja/Desktop/folders/experiments/dbms/viva/viva.py",
+		"/C/Users/srnja/Desktop/folders/experiments/dbms/exp1/exp1.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/database.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/config.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/validation.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/api.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/templates/student.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/config.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/project/application/database.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/__init__.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/controllers.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment/application/models.py",
+		"/C/Users/srnja/Desktop/folders/assignments/dbms/week7exp/hello.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/project/app.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/project/templates/profile.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/project/templates/login.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment-flask-restful/08-experiment-flask-restful/local_setup.sh",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment-flask-restful/08-experiment-flask-restful/readme.md",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment-flask-restful/08-experiment-flask-restful/main.py",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/08-experiment-flask-restful/08-experiment-flask-restful/local_run.sh",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/templates/UpdateStudent.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/templates/AlreadyExists.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week5/templates/StudentDetails.html",
+		"/C/Users/srnja/Desktop/folders/assignments/dbms/app1.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/templates/form.html",
+		"/C/Users/srnja/Desktop/folders/assignments/dbms/app.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/templates/invalid.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/templates/course.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week4/templates/hello.html",
+		"/C/Users/srnja/Desktop/folders/experiments/appdev/week5/main.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/index.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week3/project.py",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/academics.css",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/resume.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/personal.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 css/contact.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 html/resume.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 html/contact.html",
+		"/C/Users/srnja/Desktop/folders/assignments/appdev/week2 html/personal.html",
+		"/C/Users/srnja/myCodes/python/ttle.py",
+		"/C/Users/srnja/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json",
+		"/C/Users/srnja/Desktop/folders/assignments/index.html",
+		"/C/Users/srnja/myCodes/python/turtle.py",
+		"/C/Users/srnja/myCodes/python/tutle.py",
+		"/C/Users/srnja/Desktop/cricket hackathon/preprocessing.py",
+		"/C/Users/srnja/Desktop/cricket hackathon/main.py",
+		"/C/Users/srnja/Desktop/cricket hackathon/predictor.py"
+	],
+	"find":
+	{
+		"height": 27.3333333333
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.3333333333
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "tasks.sublime-project",
+	"replace":
+	{
+		"height": 50.6666666667
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 176.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
