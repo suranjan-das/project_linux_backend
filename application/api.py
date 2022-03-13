@@ -8,6 +8,7 @@ from application.models import *
 import werkzeug
 import requests
 import json
+import csv
 import uuid
 from datetime import datetime
 from flask import abort
@@ -22,9 +23,15 @@ user_post_args.add_argument('username')
 user_post_args.add_argument('email')
 user_post_args.add_argument('password')
 
-@app.route("/hello/<my_name>", methods=["GET", "POST"])
-def hello(my_name):
-    job = tasks.say_hello.delay(my_name)
+@app.route("/hello", methods=["GET", "POST"])
+def hello():
+    # job = tasks.say_hello.delay(my_name)
+    print("START")
+    now = datetime.now()
+    print("now in flask =", now)
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+    print("date and time in flask =", dt_string)
+    job = tasks.show_curr_time.apply_async(countdown=10)
     result = job.wait()
     return result, 200
 
@@ -69,7 +76,20 @@ class DeckAPI(Resource):
     @auth_token_required
     @marshal_with(deck_fields)
     def get(self):
-        
+        # name of csv file 
+        filename = "application/mydata.csv"
+        all_deck = current_user.decks.all()
+        # writing to csv file 
+        with open(filename, 'w') as csvfile: 
+            # creating a csv writer object 
+            csvwriter = csv.writer(csvfile) 
+                
+            # writing the fields 
+            csvwriter.writerow(["name", "info"]) 
+                
+            # writing the data rows
+            for deck in all_deck:
+                csvwriter.writerows([deck.deck_name, deck.deck_info])
         return current_user.decks.all(), 201
 
     @auth_token_required
