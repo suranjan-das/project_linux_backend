@@ -1,5 +1,5 @@
 from flask_restful import Resource, Api
-from flask_restful import fields, marshal_with
+from flask_restful import fields, marshal_with, marshal
 from flask_restful import reqparse
 from application.database import db
 from flask import current_app as app
@@ -23,17 +23,30 @@ user_post_args.add_argument('username')
 user_post_args.add_argument('email')
 user_post_args.add_argument('password')
 
-@app.route("/hello", methods=["GET", "POST"])
-def hello():
-    # job = tasks.say_hello.delay(my_name)
-    print("START")
-    now = datetime.now()
-    print("now in flask =", now)
-    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-    print("date and time in flask =", dt_string)
-    job = tasks.show_curr_time.apply_async(countdown=10)
-    result = job.wait()
-    return result, 200
+expor_deck_post_args = reqparse.RequestParser()
+expor_deck_post_args.add_argument('d_id')
+expor_deck_post_args.add_argument('deck_name')
+expor_deck_post_args.add_argument('deck_info')
+expor_deck_post_args.add_argument('score')
+expor_deck_post_args.add_argument('time_created')
+
+@app.route("/export", methods=["POST"])
+@auth_token_required
+def export_to_csv():
+    args = request.get_json()
+    if args:
+        deck_data, card_data = [], []
+        for arg in args:
+            my_deck = current_user.decks.filter(Deck.d_id == arg["d_id"]).first()
+            json_deck_data = marshal(my_deck, deck_fields)
+            deck_data.append(json_deck_data)
+            json_card_data = marshal(my_deck.cards.all(), card_fields)
+            card_data.append(json_card_data)
+        job = tasks.export_data_to_csv.delay([deck_data, card_data])
+        result = job.wait()
+        return "Ok", 200
+    else:
+        return "oops something wrong", 404
 
 
 class UserAPI(Resource):
@@ -76,20 +89,7 @@ class DeckAPI(Resource):
     @auth_token_required
     @marshal_with(deck_fields)
     def get(self):
-        # name of csv file 
-        filename = "application/mydata.csv"
-        all_deck = current_user.decks.all()
-        # writing to csv file 
-        with open(filename, 'w') as csvfile: 
-            # creating a csv writer object 
-            csvwriter = csv.writer(csvfile) 
-                
-            # writing the fields 
-            csvwriter.writerow(["name", "info"]) 
-                
-            # writing the data rows
-            for deck in all_deck:
-                csvwriter.writerows([deck.deck_name, deck.deck_info])
+        # send all the available decks
         return current_user.decks.all(), 201
 
     @auth_token_required
@@ -139,8 +139,8 @@ card_fields = {
 class CardAPI(Resource):
     @auth_token_required
     @marshal_with(card_fields)
-    def get(self, deck_id):
-        deck = current_user.decks.filter(Deck.d_id==deck_id).first()
+    def get(self, id):
+        deck = current_user.decks.filter(Deck.d_id==id).first()
         cards = []
         if deck:
             cards = deck.cards.all()
@@ -149,10 +149,10 @@ class CardAPI(Resource):
             return "not found", 404
 
     @auth_token_required
-    def post(self, deck_id):
+    def post(self, id):
         args = card_post_args.parse_args()
 
-        deck = current_user.decks.filter(Deck.d_id==deck_id).first()
+        deck = current_user.decks.filter(Deck.d_id==id).first()
         if deck:
             new_card = Card(front=args["front"], back=args["back"], score=0)
             db.session.add(new_card)
@@ -163,8 +163,8 @@ class CardAPI(Resource):
             return "something went wrong", 404
 
     @auth_token_required
-    def put(self, deck_id):
-        deck = current_user.decks.filter(Deck.d_id == deck_id).first()
+    def put(self, id):
+        deck = current_user.decks.filter(Deck.d_id == id).first()
         deck.time_created = datetime.now()
         cards_json = request.get_json()
         if cards_json:
@@ -176,9 +176,20 @@ class CardAPI(Resource):
                 card.score = card_json["score"]
                 score += card_json["score"]
             score = score / len(card_json)
-            deck.score = score
             db.session.commit()
         else:
+            deck.score = 0
+            db.session.commit()
             return "No cards to update", 201
 
         return "all cards has been updated", 201
+
+    @auth_token_required
+    def delete(self, id):
+        card = db.session.query(Card).filter(Card.c_id==id).first()
+
+        if card:
+            db.session.delete(card)
+            db.session.commit()
+        
+        return "card deleted successfully", 201

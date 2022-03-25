@@ -17,43 +17,43 @@ api = None
 celery = None
 
 def create_app():
-	app = Flask(__name__)
-	app.config.from_object(LocalDevelopmentConfig)
-	db.init_app(app)
-	app.app_context().push()
-	
-  # Setup Flask-Security
-	user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
-	security = Security(app, user_datastore)
+    app = Flask(__name__)
+    app.config.from_object(LocalDevelopmentConfig)
+    db.init_app(app)
+    app.app_context().push()
 
-	@security.register_context_processor
-	def security_login_processor():
-	    return dict(something="else")
+    # Setup Flask-Security
+    user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
+    security = Security(app, user_datastore)
 
-	api = Api(app)
-	CORS(app)
-	app.app_context().push()
-	# Create celery
-	celery = workers.celery
-	# Update with configuration
-	celery.conf.update(
-		broker_url = app.config["CELERY_BROKER_URL"],
-		result_backend = app.config["CELERY_RESULT_BACKEND"]
-		)
-	celery.Task = workers.ContextTask
-	app.app_context().push()
+    @security.register_context_processor
+    def security_login_processor():
+        return dict(something="else")
 
-	return app, api, celery
+    api = Api(app)
+    CORS(app)
+    app.app_context().push()
+    # Create celery
+    celery = workers.celery
+    # Update with configuration
+    celery.conf.update(
+        broker_url = app.config["CELERY_BROKER_URL"],
+        result_backend = app.config["CELERY_RESULT_BACKEND"]
+        )
+    celery.Task = workers.ContextTask
+    app.app_context().push()
+
+    return app, api, celery
 
 app,api,celery = create_app()
 
 from application.api import *
 api.add_resource(UserAPI, "/api/user")
 api.add_resource(DeckAPI, "/api/deck", "/api/deck/<int:deck_id>")
-api.add_resource(CardAPI, "/api/card/<int:deck_id>")
+api.add_resource(CardAPI, "/api/card/<int:id>")
 
 
 
 if __name__ == '__main__':
-  # Run the Flask app
-  app.run(host='0.0.0.0',port=8080, debug=True)
+    # Run the Flask app
+    app.run(host='0.0.0.0',port=8080, debug=True)
