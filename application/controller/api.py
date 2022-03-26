@@ -24,11 +24,6 @@ import time
 cache = Cache(app)
 app.app_context().push()
 
-user_post_args = reqparse.RequestParser()
-user_post_args.add_argument('username')
-user_post_args.add_argument('email')
-user_post_args.add_argument('password')
-
 expor_deck_post_args = reqparse.RequestParser()
 expor_deck_post_args.add_argument('d_id')
 expor_deck_post_args.add_argument('deck_name')
@@ -53,6 +48,19 @@ def export_to_csv():
         return "Ok", 200
     else:
         return "oops something wrong", 404
+
+@app.route("/remind", methods=["GET"])
+def remind():
+    # ptask = PeriodicTask.objects.get(name='task_name')
+    ptask = tasks.setup_periodic_tasks.s()
+    ptask.enabled = False
+    ptask.save()
+    return "ok", 200
+
+user_post_args = reqparse.RequestParser()
+user_post_args.add_argument('username')
+user_post_args.add_argument('email')
+user_post_args.add_argument('password')
 
 
 class UserAPI(Resource):

@@ -1,13 +1,27 @@
 from application.jobs.workers import celery
 from datetime import datetime
+from celery.schedules import crontab
 import csv
 import time
+from application.data.database import db
+from application.data.models import *
+
+@celery.on_after_finalize.connect
+def setup_periodic_tasks(sender, **kwargs):
+    # sender.add_periodic_task(10.0, show_curr_time.s(), name='add every 10 seconds')
+    sender.add_periodic_task(10.0, get_user_last_reviewed_time.s(), name='add every 10 seconds')
 
 @celery.task()
-def say_hello(name):
-	print("INSIDE TASK")
-	print("Hello {}".format(name))
-	return "Hello {}".format(name)
+def get_user_last_reviewed_time():
+    now = datetime.now()
+    users = User.query.all()
+    for user in users:
+        user_decks = user.decks
+        for deck in user_decks:
+            date_reviewed = deck.time_created
+            delta = now - date_reviewed
+            days_last_reviewed = delta.days
+    return "Hello"
 
 @celery.task()
 def show_curr_time():
