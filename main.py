@@ -3,11 +3,12 @@ from flask import Flask
 from flask_restful import Resource, Api
 from application import config
 from application.config import LocalDevelopmentConfig
-from application.database import db
-from application import workers
+from application.data.database import db
+from application.jobs import workers
 from sqlalchemy.orm import scoped_session, sessionmaker
 from flask_security import Security, SQLAlchemySessionUserDatastore, SQLAlchemyUserDatastore
-from application.models import User, Role
+from application.data.models import User, Role
+
 from flask_login import LoginManager
 from flask_security import utils
 from flask_cors import CORS
@@ -42,12 +43,12 @@ def create_app():
         )
     celery.Task = workers.ContextTask
     app.app_context().push()
-
+    
     return app, api, celery
 
 app,api,celery = create_app()
 
-from application.api import *
+from application.controller.api import UserAPI, DeckAPI, CardAPI
 api.add_resource(UserAPI, "/api/user")
 api.add_resource(DeckAPI, "/api/deck", "/api/deck/<int:deck_id>")
 api.add_resource(CardAPI, "/api/card/<int:id>")

@@ -10,3 +10,4 @@ uuid
 redis
 celery[redis]
 requests
+Flask-Caching

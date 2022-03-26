@@ -1,4 +1,4 @@
-from application.workers import celery
+from application.jobs.workers import celery
 from datetime import datetime
 import csv
 import time

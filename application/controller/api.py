@@ -1,10 +1,10 @@
 from flask_restful import Resource, Api
 from flask_restful import fields, marshal_with, marshal
 from flask_restful import reqparse
-from application.database import db
+from application.data.database import db
 from flask import current_app as app
 from flask import request
-from application.models import *
+from application.data.models import *
 import werkzeug
 import requests
 import json
@@ -16,7 +16,13 @@ from flask_login import current_user
 from flask_bcrypt import Bcrypt
 from flask_security import auth_required, login_required, roles_accepted, roles_required, auth_token_required
 
-from application import tasks
+from application.jobs import tasks
+from flask_caching import Cache
+import time
+
+# add cache to the app
+cache = Cache(app)
+app.app_context().push()
 
 user_post_args = reqparse.RequestParser()
 user_post_args.add_argument('username')
@@ -87,10 +93,15 @@ deck_fields = {
 
 class DeckAPI(Resource):
     @auth_token_required
+    @cache.cached(timeout=50)
     @marshal_with(deck_fields)
     def get(self):
+        start = time.perf_counter_ns()
         # send all the available decks
-        return current_user.decks.all(), 201
+        all_decks = current_user.decks.all(), 201
+        stop = time.perf_counter_ns()
+        print("time taken to retrieve deck data", stop - start)
+        return all_decks
 
     @auth_token_required
     def post(self):
@@ -138,6 +149,7 @@ card_fields = {
 
 class CardAPI(Resource):
     @auth_token_required
+    @cache.cached(timeout=50)
     @marshal_with(card_fields)
     def get(self, id):
         deck = current_user.decks.filter(Deck.d_id==id).first()
