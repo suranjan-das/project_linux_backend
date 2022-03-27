@@ -11,3 +11,4 @@ redis
 celery[redis]
 requests
 Flask-Caching
+jinja2

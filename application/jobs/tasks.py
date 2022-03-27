@@ -5,11 +5,15 @@ import csv
 import time
 from application.data.database import db
 from application.data.models import *
+import requests
+import json
+
+GCHAT_WEBHOOK_URL = "https://chat.googleapis.com/v1/spaces/AAAAF_kfYyI/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=3CepxdOylc6dAUO_MOCF1RN38fjMoOnxgcwThXqwj68%3D"
 
 @celery.on_after_finalize.connect
 def setup_periodic_tasks(sender, **kwargs):
     # sender.add_periodic_task(10.0, show_curr_time.s(), name='add every 10 seconds')
-    sender.add_periodic_task(10.0, get_user_last_reviewed_time.s(), name='add every 10 seconds')
+    sender.add_periodic_task(10.0, get_user_last_reviewed_time.s(), name='notify in gchat')
 
 @celery.task()
 def get_user_last_reviewed_time():
@@ -21,7 +25,19 @@ def get_user_last_reviewed_time():
             date_reviewed = deck.time_created
             delta = now - date_reviewed
             days_last_reviewed = delta.days
-    return "Hello"
+            print("last reviewed days from today", days_last_reviewed)
+            if days_last_reviewed >= 1:
+                # send gchat reminder
+                send_gchat_reminder(GCHAT_WEBHOOK_URL, "You have not reviewed anything in the last day!!")
+    return "reminder sent to user successfully"
+
+
+def send_gchat_reminder(url, message):
+    try:
+        print(message)
+        requests.post(url, data=json.dumps({"text" : message}))
+    except Exception as e:
+        return "something went wrong"
 
 @celery.task()
 def show_curr_time():
