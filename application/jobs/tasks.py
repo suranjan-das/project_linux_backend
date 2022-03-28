@@ -7,13 +7,29 @@ from application.data.database import db
 from application.data.models import *
 import requests
 import json
+from application.utils import email_util
 
 GCHAT_WEBHOOK_URL = "https://chat.googleapis.com/v1/spaces/AAAAF_kfYyI/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=3CepxdOylc6dAUO_MOCF1RN38fjMoOnxgcwThXqwj68%3D"
 
 @celery.on_after_finalize.connect
 def setup_periodic_tasks(sender, **kwargs):
-    # sender.add_periodic_task(10.0, show_curr_time.s(), name='add every 10 seconds')
-    sender.add_periodic_task(10.0, get_user_last_reviewed_time.s(), name='notify in gchat')
+    sender.add_periodic_task(60.0, get_user_last_reviewed_time.s(), name='notify in gchat')
+
+@celery.on_after_finalize.connect
+def setup_email_report_tasks(sender, **kwargs):
+    sender.add_periodic_task(30.0, send_mail_to_user.s(), name='report in email')
+
+@celery.task
+def send_mail_to_user():
+    print("sending mail to users")
+    users = User.query.all()
+    user_group = []
+    if users:
+        for user in users:
+            user_group.append({"name":user.username, "email":user.email})
+    if user_group:
+        for usg in user_group:
+            email_util.send_welcome_message(data=usg)
 
 @celery.task()
 def get_user_last_reviewed_time():

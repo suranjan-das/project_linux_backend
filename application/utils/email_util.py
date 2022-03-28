@@ -41,14 +41,33 @@ def send_email(to_address, subject, message, content="text", attachment_file=Non
     s.quit()
     return True
 
+report_template = '''<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+</head>
+<body>
+<p>Dear {{data['name']}},</p>
+<p>Welcome to our learning application. We have attached the application guide for you. </p>
+<p>If you have any query, Please contact us. </p>
+<p>Regards, </p>
+<p>Suranjan Das</p>
+</body>
+</html>'''
+
 def format_message(template_file, data={}):
-    with open(template_file) as file_:
-        template = Template(file_.read())
-        return template.render(data=data)
+    # with open(template_file) as file_:
+    #     template = Template(file_.read())
+    #     return template.render(data=data)
+    template = Template(report_template)
+    return template.render(data=data)
 
 def send_welcome_message(data):
     message = format_message("monthly_report.html", data=data)
-    status = send_email(data["email"], subject="Welcome email", message=message, content="html", attachment_file="test.pdf")
+    status = send_email(data["email"], subject="Welcome email", message=message, content="html", attachment_file=None)
 
 # def main():
 #     new_user = [

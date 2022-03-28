@@ -76,7 +76,7 @@ class UserAPI(Resource):
         user = db.session.query(User).filter(User.email == args["email"]).first()
 
         if user:
-            return "email already in use", 404
+            return "email already in use", 435
 
         new_user = User(username=args["username"], email=args["email"], password=args["password"])
         new_user.fs_uniquifier = str(uuid.uuid4())
@@ -101,7 +101,7 @@ deck_fields = {
 
 class DeckAPI(Resource):
     @auth_token_required
-    @cache.cached(timeout=50)
+    # @cache.cached(timeout=50)
     @marshal_with(deck_fields)
     def get(self):
         start = time.perf_counter_ns()
@@ -157,7 +157,6 @@ card_fields = {
 
 class CardAPI(Resource):
     @auth_token_required
-    @cache.cached(timeout=50)
     @marshal_with(card_fields)
     def get(self, id):
         deck = current_user.decks.filter(Deck.d_id==id).first()
@@ -185,8 +184,9 @@ class CardAPI(Resource):
     @auth_token_required
     def put(self, id):
         deck = current_user.decks.filter(Deck.d_id == id).first()
-        deck.time_created = datetime.now()
-        cards_json = request.get_json()
+        if deck:
+            deck.time_created = datetime.now()
+            cards_json = request.get_json()
         if cards_json:
             score = 0
             for card_json in cards_json:
@@ -195,7 +195,8 @@ class CardAPI(Resource):
                 card.back = card_json["back"]
                 card.score = card_json["score"]
                 score += card_json["score"]
-            score = score / len(card_json)
+            score = score // len(card_json)
+            deck.score = score
             db.session.commit()
         else:
             deck.score = 0
