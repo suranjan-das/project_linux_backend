@@ -39,7 +39,8 @@ def create_app():
     # Update with configuration
     celery.conf.update(
         broker_url = app.config["CELERY_BROKER_URL"],
-        result_backend = app.config["CELERY_RESULT_BACKEND"]
+        result_backend = app.config["CELERY_RESULT_BACKEND"],
+        timezone='Asia/Kolkata'
         )
     celery.Task = workers.ContextTask
     app.app_context().push()

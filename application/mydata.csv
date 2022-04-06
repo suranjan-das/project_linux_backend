@@ -1,5 +1,8 @@
 d_id,deck_name,deck_info,time_created,score
-32,HTML,learn html tags,2022-03-28 20:04:28.586508,1
+33,Bengali,learn Bengali,2022-03-28 22:13:06.384514,2
 c_id,front,back,score
-47,div,block level tag,1
-48,p tag,paragraph,5
+49,গরম,hot,5
+50,শব্দ,word,1
+51,খেলা,play,5
+52,শেষ,end,0
+53,হাত,Hand,0

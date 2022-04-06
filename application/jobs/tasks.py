@@ -13,11 +13,12 @@ GCHAT_WEBHOOK_URL = "https://chat.googleapis.com/v1/spaces/AAAAF_kfYyI/messages?
 
 @celery.on_after_finalize.connect
 def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(60.0, get_user_last_reviewed_time.s(), name='notify in gchat')
+    # sender.add_periodic_task(1060.0, get_user_last_reviewed_time.s(), name='notify in gchat')
+    pass
 
 @celery.on_after_finalize.connect
 def setup_email_report_tasks(sender, **kwargs):
-    sender.add_periodic_task(30.0, send_mail_to_user.s(), name='report in email')
+    sender.add_periodic_task(crontab(minute="*"), send_mail_to_user.s(), name='report in email')
 
 @celery.task
 def send_mail_to_user():
@@ -25,14 +26,16 @@ def send_mail_to_user():
     users = User.query.all()
     user_group = []
     if users:
+        user_deck_data = []
         for user in users:
-            user_group.append({"name":user.username, "email":user.email})
+            user_deck_data = prepare_user_monthly_report(user.email)
+            user_group.append({"name":user.username, "email":user.email, "decks": user_deck_data})
     if user_group:
         for usg in user_group:
             email_util.send_welcome_message(data=usg)
 
 @celery.task()
-def get_user_last_reviewed_time():
+def get_user_last_reviewed_time(email):
     now = datetime.now()
     users = User.query.all()
     for user in users:
@@ -41,11 +44,26 @@ def get_user_last_reviewed_time():
             date_reviewed = deck.time_created
             delta = now - date_reviewed
             days_last_reviewed = delta.days
-            print("last reviewed days from today", days_last_reviewed)
             if days_last_reviewed >= 1:
                 # send gchat reminder
                 send_gchat_reminder(GCHAT_WEBHOOK_URL, "You have not reviewed anything in the last day!!")
     return "reminder sent to user successfully"
+
+def prepare_user_monthly_report(email):
+    now = datetime.now()
+    user = User.query.filter(User.email == email).first()
+    deck_data = []
+    if user:
+        user_decks = user.decks
+        if user_decks:
+            for deck in user_decks:
+                date_reviewed = deck.time_created
+                delta = now - date_reviewed
+                days_last_reviewed = delta.days
+                if delta.days <= 31:
+                    deck_data.append({"deck_name": deck.deck_name, "deck_info": deck.deck_info,
+                        "time_viewed": deck.time_created.strftime("%m/%d/%Y"), "score": deck.score})
+    return deck_data
 
 
 def send_gchat_reminder(url, message):

@@ -48,34 +48,58 @@ report_template = '''<!DOCTYPE html>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
+    <style>
+        #userdeck {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        #userdeck  td, #userdeck  th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+
+        #userdeck th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: center;
+          background-color: #04AA6D;
+          color: white;
+}
+    </style>
 </head>
 <body>
 <p>Dear {{data['name']}},</p>
-<p>Welcome to our learning application. We have attached the application guide for you. </p>
-<p>If you have any query, Please contact us. </p>
+<p>Welcome to our memory card application. Here is your monthly report. </p>
+<p>Here are the actvities done by you in the last month</p>
+<table id='userdeck'>
+  <tr>
+    <th>Deck Name</th>
+    <th>Deck Info</th>
+    <th>Last Viewed</th>
+    <th>Deck Score</th>
+  </tr>
+  {% for deck in data.decks %}
+  <tr>
+    <td>{{ deck.deck_name }}</td>
+    <td>{{ deck.deck_info }}</td>
+    <td>{{ deck.time_viewed }}</td>
+    <td>{{ deck.score }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<p>If you have any query, Please contact us on flashcard@example.com.</p>
+<p>Thank you for sticking with us</p>
 <p>Regards, </p>
 <p>Suranjan Das</p>
 </body>
 </html>'''
 
 def format_message(template_file, data={}):
-    # with open(template_file) as file_:
-    #     template = Template(file_.read())
-    #     return template.render(data=data)
     template = Template(report_template)
     return template.render(data=data)
 
 def send_welcome_message(data):
     message = format_message("monthly_report.html", data=data)
-    status = send_email(data["email"], subject="Welcome email", message=message, content="html", attachment_file=None)
-
-# def main():
-#     new_user = [
-#         {"name": "Jolly", "email": "jolly@example.com"},
-#         {"name": "Tuan", "email": "tuansona@example.com"}]
-
-#     for user in new_user:
-#         send_welcome_message(data=user)
-
-# if __name__ == "__main__":
-#     main()
+    status = send_email(data["email"], subject="Monthly review report", message=message, content="html", attachment_file=None)
